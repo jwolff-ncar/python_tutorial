@@ -1,7 +1,9 @@
 # Using this page for instruction: https://ncar.github.io/python-tutorial/tutorials/beginner.html#reading-a-txt-file
 
 # Initialize my data variable
-data = []
+#data = []
+data = {'date':[], 'time':[], 'tempout':[]} #dictionary key
+#time = data['time']
 
 # Hello World
 #print("Hello, world!")
@@ -28,9 +30,14 @@ with open(filename, 'r') as datafile:
       # print(_)
       datafile.readline()
    # Read and parse the rest of the file
+   #for line in datafile:
+      #datum = line.split() # () space separated (,) comma seperated ('/t') tab seperated
+      #data.append(datum) # Adds datum to end list of lists of strings 
    for line in datafile:
-      datum = line.split() # () space separated (,) comma seperated ('/t') tab seperated
-      data.append(datum) # Adds datum to end list of lists of strings 
+      split_line = line.split()
+      data['date'].append(split_line[0])
+      data['time'].append(split_line[1])
+      data['tempout'].append(split_line[2])
 
 # DEBUG 
 #print(data) - # Print the data read in
@@ -49,3 +56,4 @@ with open(filename, 'r') as datafile:
 #print(data[8][::2])
 #print(data[5:8][0])
 #print(data[5])
+print(data['time'])
