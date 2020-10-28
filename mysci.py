@@ -1,5 +1,8 @@
 # Using this page for instruction: https://ncar.github.io/python-tutorial/tutorials/beginner.html#reading-a-txt-file
 
+# Initialize my data variable
+data = []
+
 # Hello World
 #print("Hello, world!")
 
@@ -19,10 +22,30 @@ filename = "data/wxobs20170821.txt"
 
 # Third attempt: Using "with open" automatically closes for you - recommended option
 with open(filename, 'r') as datafile:
-   data = datafile.read()
+   # data = datafile.read()
+   # read the first three lines (header)
+   for _ in range(3): # the _ is our iterator: similar to "for i in [0, 1, 2]:"
+      # print(_)
+      datafile.readline()
+   # Read and parse the rest of the file
+   for line in datafile:
+      datum = line.split() # () space separated (,) comma seperated ('/t') tab seperated
+      data.append(datum) # Adds datum to end list of lists of strings 
 
 # DEBUG 
 #print(data) - # Print the data read in
 #print('data') # Print the word "data"
 #print(type(data)) # Print the data type
-
+#for datum in data:
+   #print(datum)
+#print(data[0]) # python is 0-based language so this is an index list
+#print(data[9])
+#print(data[-1]) # print last index (-2 would be second to last, etc.)
+#print(data[0:10]) # print first 10 data lists
+#for datum in data[:10:2]: # if you don't specify the starting index it will assume you are starting at the first index, secod colon is a step
+   #print(datum)
+#print(data[8][4]) # Pulls data from index 8 and then index 4 of 8
+#print(data[8][:5])
+#print(data[8][::2])
+#print(data[5:8][0])
+#print(data[5])
