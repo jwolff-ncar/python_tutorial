@@ -1,9 +1,18 @@
 # Using this page for instruction: https://ncar.github.io/python-tutorial/tutorials/beginner.html#reading-a-txt-file
 
+# Column names and column indices to read
+columns = {'date':0, 'time':1, 'tempout':2}
+
+# Data types for each column (oonly if non-string)
+types = {'tempout': float}
+
 # Initialize my data variable
 #data = []
-data = {'date':[], 'time':[], 'tempout':[]} #dictionary key
+#data = {'date':[], 'time':[], 'tempout':[]} #dictionary key
 #time = data['time']
+data = {}
+for column in columns:
+   data[column] = []
 
 # Hello World
 #print("Hello, world!")
@@ -33,11 +42,18 @@ with open(filename, 'r') as datafile:
    #for line in datafile:
       #datum = line.split() # () space separated (,) comma seperated ('/t') tab seperated
       #data.append(datum) # Adds datum to end list of lists of strings 
+   #for line in datafile:
+      #split_line = line.split()
+      #data['date'].append(split_line[0])
+      #data['time'].append(split_line[1])
+      #data['tempout'].append(float(split_line[2])) # Turn temp into a float rather than string
    for line in datafile:
       split_line = line.split()
-      data['date'].append(split_line[0])
-      data['time'].append(split_line[1])
-      data['tempout'].append(float(split_line[2])) # Turn temp into a float rather than string
+      for column in columns:
+         i = columns[column]
+         t = types.get(column, str)
+         value = t(split_line[i])
+         data[column].append(value)
 
 # DEBUG 
 #print(data) - # Print the data read in
@@ -57,4 +73,5 @@ with open(filename, 'r') as datafile:
 #print(data[5:8][0])
 #print(data[5])
 #print(data['time'])
+#print(data['tempout'])
 print(data['tempout'])
