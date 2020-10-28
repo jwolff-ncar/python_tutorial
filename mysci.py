@@ -37,7 +37,7 @@ with open(filename, 'r') as datafile:
       split_line = line.split()
       data['date'].append(split_line[0])
       data['time'].append(split_line[1])
-      data['tempout'].append(split_line[2])
+      data['tempout'].append(float(split_line[2])) # Turn temp into a float rather than string
 
 # DEBUG 
 #print(data) - # Print the data read in
@@ -56,4 +56,5 @@ with open(filename, 'r') as datafile:
 #print(data[8][::2])
 #print(data[5:8][0])
 #print(data[5])
-print(data['time'])
+#print(data['time'])
+print(data['tempout'])
