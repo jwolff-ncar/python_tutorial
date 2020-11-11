@@ -1,10 +1,10 @@
 # Using this page for instruction: https://ncar.github.io/python-tutorial/tutorials/beginner.html#reading-a-txt-file
 
 # Column names and column indices to read
-columns = {'date':0, 'time':1, 'tempout':2}
+columns = {'date':0, 'time':1, 'tempout':2, 'windspeed':7}
 
 # Data types for each column (oonly if non-string)
-types = {'tempout': float}
+types = {'tempout': float, 'windspeed': float}}
 
 # Initialize my data variable
 #data = []
@@ -38,6 +38,8 @@ with open(filename, 'r') as datafile:
    for _ in range(3): # the _ is our iterator: similar to "for i in [0, 1, 2]:"
       # print(_)
       datafile.readline()
+      #headerline = datafile.readline()
+      #print(headerline)
    # Read and parse the rest of the file
    #for line in datafile:
       #datum = line.split() # () space separated (,) comma seperated ('/t') tab seperated
@@ -74,4 +76,4 @@ with open(filename, 'r') as datafile:
 #print(data[5])
 #print(data['time'])
 #print(data['tempout'])
-print(data['tempout'])
+#print(data['tempout'])
